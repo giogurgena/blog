@@ -1,6 +1,7 @@
 import { AuthenticationService } from './../services/authenticatio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,8 +9,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
   form: FormGroup;
+  // authenticated: true;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(
+    private authService: AuthenticationService,
+    private route: Router
+  ) {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
@@ -20,8 +25,17 @@ export class NavbarComponent implements OnInit {
 
   onLogin(event) {
     event.preventDefault();
-    this.authService.login(this.form.value).subscribe((response) => {
-      console.log(this.form.getRawValue());
+    this.authService.login(this.form.value).subscribe((response: any) => {
+      console.log(response);
     });
+  }
+
+  isAuthorised(): boolean {
+    return this.authService.isAuthorised;
+  }
+
+  onLogout() {
+    this.authService.logout();
+    location.reload();
   }
 }

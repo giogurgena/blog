@@ -1,0 +1,17 @@
+<div class="blog-categories mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <app-blog-categories
+          [blogCategories]="blogCategories"
+        ></app-blog-categories>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <app-blog-articles
+          [articles]="articles"
+          [paging]="paging"
+        ></app-blog-articles>
+      </div>
+    </div>
+  </div>
+</div>

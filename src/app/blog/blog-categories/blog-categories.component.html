@@ -1,16 +1,5 @@
-<div class="blog-categories mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-4">
-        <div class="list-group" *ngFor="let blogcategory of blogCategories">
-          <a href="#" class="list-group-item list-group-item-action">
-            {{ blogcategory.name }}
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-8">
-        <app-blog-articles></app-blog-articles>
-      </div>
-    </div>
-  </div>
+<div class="list-group" *ngFor="let blogcategory of blogCategories">
+  <a href="#" class="list-group-item list-group-item-action">
+    {{ blogcategory.name }}
+  </a>
 </div>
