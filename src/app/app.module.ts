@@ -8,9 +8,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BlogCategoriesComponent } from './blog/blog-categories/blog-categories.component';
+import { BlogArticlesComponent } from './blog/blog-articles/blog-articles.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, BlogCategoriesComponent, BlogArticlesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

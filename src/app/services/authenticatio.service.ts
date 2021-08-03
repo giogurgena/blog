@@ -6,13 +6,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticatioService {
+export class AuthenticationService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   login(model: Login) {
-    console.log(model);
     return this.http.post(this.baseUrl + 'Authentication/Login', model);
   }
 }
