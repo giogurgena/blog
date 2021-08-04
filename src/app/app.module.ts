@@ -1,3 +1,5 @@
+import { AuthenticationService } from './services/authenticatio.service';
+import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -13,9 +15,21 @@ import { BlogArticlesComponent } from './blog/blog-articles/blog-articles.compon
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, BlogCategoriesComponent, BlogArticlesComponent, AdminPanelComponent, HomeComponent, BlogComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    BlogCategoriesComponent,
+    BlogArticlesComponent,
+    AdminPanelComponent,
+    HomeComponent,
+    BlogComponent,
+    NotFoundComponent,
+    AccessDeniedComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,7 +38,7 @@ import { BlogComponent } from './blog/blog.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

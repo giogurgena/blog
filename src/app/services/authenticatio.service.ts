@@ -52,6 +52,7 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
   }
 
   private getToken(): string {
@@ -66,7 +67,6 @@ export class AuthenticationService {
 
     let tokenPayload = this.helperJwt.decodeToken(token);
     let user: User = this.mapTokenPayloadToUser(tokenPayload);
-    console.log(tokenPayload);
 
     return user;
   }

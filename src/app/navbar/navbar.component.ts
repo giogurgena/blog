@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   onLogin(event) {
     event.preventDefault();
     this.authService.login(this.form.value).subscribe((response: any) => {
-      console.log(response);
+      this.route.navigate(['admin']);
     });
   }
 
@@ -36,6 +36,6 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
-    location.reload();
+    this.route.navigate(['']);
   }
 }
