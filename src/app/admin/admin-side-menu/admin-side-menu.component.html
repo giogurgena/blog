@@ -1,0 +1,68 @@
+<div class="side-nav">
+  <div
+    class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark side-nav-opt"
+  >
+    <a
+      routerLink="/admin"
+      class="
+        d-flex
+        align-items-center
+        mb-3 mb-md-0
+        me-md-auto
+        text-white text-decoration-none
+      "
+    >
+      <span class="fs-4">Dashboard</span>
+    </a>
+    <hr />
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          routerLink="/admin-articles"
+        >
+          Articles
+        </a>
+      </li>
+      <li>
+        <a class="nav-link text-white" routerLink="/admin-categories">
+          Categories
+        </a>
+      </li>
+      <hr />
+      <div ngbDropdown class="d-inline-block side-dropdown">
+        <a
+          class="
+            d-flex
+            align-items-center
+            text-white text-decoration-none
+            dropdown-toggle
+          "
+          id="dropdownBasic1"
+          ngbDropdownToggle
+          style="cursor: pointer"
+        >
+          <img
+            src="https://github.com/mdo.png"
+            alt=""
+            width="32"
+            height="32"
+            class="rounded-circle me-2"
+          />
+          <strong>User</strong>
+        </a>
+
+        <div
+          ngbDropdownMenu
+          aria-labelledby="dropdownBasic1"
+          class="dropdown-menu"
+        >
+          <button ngbDropdownItem routerLink="/">Home</button>
+          <div class="dropdown-divider"></div>
+          <button ngbDropdownItem (click)="onLogout()">Sign Out</button>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>

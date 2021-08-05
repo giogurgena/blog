@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12 col-md-3 col-lg-2">
+    <app-admin-side-menu></app-admin-side-menu>
+  </div>
+  <div class="col-sm-12 col-md-9 col-lg-10">
+    <div class="main-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" sortable="name">ID</th>
+            <th scope="col" sortable="area">Caption</th>
+            <th scope="col" sortable="area">Category</th>
+            <th scope="col" sortable="population">Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let article of articles; let i = index">
+          <tr>
+            <th>{{ i + 1 }}</th>
+            <td>{{ article.id }}</td>
+            <td>{{ article.caption }}</td>
+            <td>{{ article.categoryName }}</td>
+            <td>
+              <fa-icon [icon]="faEdit"></fa-icon
+              ><fa-icon [icon]="faTrash"></fa-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

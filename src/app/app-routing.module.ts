@@ -1,3 +1,5 @@
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
+import { AdminArticlesComponent } from './admin/admin-articles/admin-articles.component';
 import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -14,6 +16,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
   },
+  { path: 'admin-articles', component: AdminArticlesComponent },
+  { path: 'admin-categories', component: AdminCategoriesComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },

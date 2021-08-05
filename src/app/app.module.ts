@@ -17,6 +17,10 @@ import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
+import { AdminArticlesComponent } from './admin/admin-articles/admin-articles.component';
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
+import { AdminSideMenuComponent } from './admin/admin-side-menu/admin-side-menu.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,9 @@ import { AccessDeniedComponent } from './errors/access-denied/access-denied.comp
     BlogComponent,
     NotFoundComponent,
     AccessDeniedComponent,
+    AdminArticlesComponent,
+    AdminCategoriesComponent,
+    AdminSideMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import { AccessDeniedComponent } from './errors/access-denied/access-denied.comp
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent],
