@@ -22,4 +22,8 @@ export class BlogService {
   getArticles(): Observable<ArticlesResponse> {
     return this.http.get<ArticlesResponse>(this.baseUrl + 'Articles');
   }
+
+  postArticles() {
+    // return this.http.post(this.baseUrl + 'Articles', data);
+  }
 }
