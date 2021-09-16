@@ -34,7 +34,6 @@ export class BlogComponent implements OnInit {
     this.blogService.getArticles().subscribe((response: ArticlesResponse) => {
       this.articles = response.articles;
       this.paging = response.paging;
-      console.log(this.articles);
     });
   }
 }

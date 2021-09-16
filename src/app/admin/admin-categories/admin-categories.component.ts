@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BlogCategory } from 'src/app/models/blogCategories';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-admin-categories',
@@ -8,11 +9,21 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./admin-categories.component.scss'],
 })
 export class AdminCategoriesComponent implements OnInit {
-  @Input() adminCategories: BlogCategory[];
+  adminCategories: BlogCategory[];
   faEdit = faEdit;
   faTrash = faTrash;
 
-  constructor() {}
+  constructor(private blogService: BlogService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadBlogCategories();
+  }
+
+  loadBlogCategories() {
+    this.blogService
+      .getBlogCategories()
+      .subscribe((response: BlogCategory[]) => {
+        this.adminCategories = response;
+      });
+  }
 }

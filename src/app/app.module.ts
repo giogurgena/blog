@@ -21,6 +21,8 @@ import { AdminArticlesComponent } from './admin/admin-articles/admin-articles.co
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AdminSideMenuComponent } from './admin/admin-side-menu/admin-side-menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ArticleAddComponent } from './admin/admin-articles/article-add/article-add.component';
+import { CategoriesAddComponent } from './admin/admin-categories/categories-add/categories-add.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AdminArticlesComponent,
     AdminCategoriesComponent,
     AdminSideMenuComponent,
+    ArticleAddComponent,
+    CategoriesAddComponent,
   ],
   imports: [
     BrowserModule,

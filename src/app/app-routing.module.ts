@@ -1,3 +1,4 @@
+import { ArticleAddComponent } from './admin/admin-articles/article-add/article-add.component';
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AdminArticlesComponent } from './admin/admin-articles/admin-articles.component';
 import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
@@ -12,12 +13,20 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'admin',
-    component: AdminPanelComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
+    children: [
+      { path: '', component: AdminPanelComponent },
+      {
+        path: 'articles',
+        children: [
+          { path: '', component: AdminArticlesComponent },
+          { path: 'add', component: ArticleAddComponent },
+        ],
+      },
+      { path: 'categories', component: AdminCategoriesComponent },
+    ],
   },
-  { path: 'admin-articles', component: AdminArticlesComponent },
-  { path: 'admin-categories', component: AdminCategoriesComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },

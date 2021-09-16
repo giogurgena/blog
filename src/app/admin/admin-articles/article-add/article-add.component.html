@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-12 col-md-3 col-lg-2">
+    <app-admin-side-menu></app-admin-side-menu>
+  </div>
+  <div class="col-sm-12 col-md-9 col-lg-10">
+    <div class="main-content">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Articles</h1>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-primary float-right" (click)="onSave()">
+            Save
+          </button>
+        </div>
+      </div>
+      <div class="content">
+        <form [formGroup]="form" (ngSubmit)="onSave()">
+          <div formArrayName="languages">
+            <div class="row">
+              <div
+                *ngFor="let language of languageFormGroups; let i = index"
+                class="col-6"
+              >
+                <div [formGroup]="language">
+                  <div class="card">
+                    <div class="card-header">
+                      {{ displayLanguage(language) }}
+                    </div>
+                    <div class="card-body form-group">
+                      <input
+                        class="form-control"
+                        sformControlName="caption"
+                        placeholder="caption"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
