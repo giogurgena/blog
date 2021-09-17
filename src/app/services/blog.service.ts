@@ -39,4 +39,10 @@ export class BlogService {
   deleteArticle(id){
     return this.http.delete(this.baseUrl + 'Articles/' + id);
   }
+
+  uploadPoster(id, file) {
+    const formData: FormData = new FormData();
+      formData.append('file', file);
+    return this.http.patch(this.baseUrl + 'Articles/' + id + '/UploadPoster', formData);
+  }
 }

@@ -16,6 +16,15 @@
       </div>
       <div class="content">
         <form [formGroup]="form" (ngSubmit)="onSave()">
+          <div class="img-upload form-group">
+            <label for="formFileLg" class="form-label">Upload Image</label>
+            <input
+              class="form-control form-control-lg"
+              id="formFileLg"
+              type="file"
+              (change)="onFileChanged($event)"
+            />
+          </div>
           <div class="categories form-group">
             <select
               class="form-select"

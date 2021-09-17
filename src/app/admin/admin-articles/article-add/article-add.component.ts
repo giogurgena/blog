@@ -23,6 +23,7 @@ export class ArticleAddComponent implements OnInit {
   blogCategories: BlogCategory[];
   articles;
   id;
+  file;
 
   form = this.fb.group({
     titles: this.fb.array([]),
@@ -85,20 +86,26 @@ export class ArticleAddComponent implements OnInit {
     }
   }
 
+  onFileChanged(event) {
+    if (event.target.file === 0)
+        return;
+
+        this.file = event.target.files[0];
+  }
+
   onSave() {
     const data = this.form.getRawValue();
     if(this.id) {
-      this.blogService.putArticle(this.id, data).subscribe((result)=> {
-        this.router.navigate(['/admin/articles'])
+      this.blogService.putArticle(this.id, data).subscribe(()=> {
+        this.handlePostUpload(this.id);
       })
     } else {
       this.blogService.postArticle(data).subscribe((result) => {
-        this.router.navigate(['/admin/articles'])
+        this.handlePostUpload(result);
+        
       });
     }
   }
-
-
   loadBlogCategories() {
     this.blogService
       .getBlogCategories()
@@ -106,4 +113,17 @@ export class ArticleAddComponent implements OnInit {
         this.blogCategories = response;
       });
   }
+
+
+
+  private handlePostUpload(id) {
+    if (this.file) {
+      this.blogService.uploadPoster(id, this.file).subscribe(() => {
+        this.router.navigate(['/admin/articles']);
+      });
+    } else {
+      this.router.navigate(['/admin/articles']);
+    }
+  }
+
 }
