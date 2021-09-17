@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../models/articles/articles';
+import { Articles } from '../models/articles/articles';
 import { ArticlesResponse } from '../models/articles/articlesResponse';
 import { BlogCategory } from '../models/blogCategories';
 import { Paging } from '../models/paging';
@@ -12,7 +12,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class BlogComponent implements OnInit {
   blogCategories: BlogCategory[];
-  articles: Article[];
+  articles: Articles[];
   paging: Paging;
 
   constructor(private blogService: BlogService) {}

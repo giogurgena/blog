@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Paging } from './../../models/paging';
 
-import { Article } from 'src/app/models/articles/articles';
+import { Articles } from 'src/app/models/articles/articles';
 
 @Component({
   selector: 'app-blog-articles',
@@ -9,7 +9,7 @@ import { Article } from 'src/app/models/articles/articles';
   styleUrls: ['./blog-articles.component.scss'],
 })
 export class BlogArticlesComponent {
-  @Input() articles: Article[];
+  @Input() articles: Articles[];
   @Input() paging: Paging;
 
   constructor() {}

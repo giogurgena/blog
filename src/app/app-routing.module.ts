@@ -22,6 +22,7 @@ const routes: Routes = [
         children: [
           { path: '', component: AdminArticlesComponent },
           { path: 'add', component: ArticleAddComponent },
+          { path: 'edit/:id', component: ArticleAddComponent },
         ],
       },
       { path: 'categories', component: AdminCategoriesComponent },

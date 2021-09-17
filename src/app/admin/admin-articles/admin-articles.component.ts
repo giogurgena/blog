@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Article } from 'src/app/models/articles/articles';
+import { Articles } from 'src/app/models/articles/articles';
 import { ArticlesResponse } from 'src/app/models/articles/articlesResponse';
 import { Paging } from 'src/app/models/paging';
 import { BlogService } from 'src/app/services/blog.service';
@@ -11,7 +11,7 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./admin-articles.component.scss'],
 })
 export class AdminArticlesComponent implements OnInit {
-  articles: Article[];
+  articles: Articles[];
   paging: Paging;
   faEdit = faEdit;
   faTrash = faTrash;
@@ -20,6 +20,7 @@ export class AdminArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadArticles();
+    
   }
 
   loadArticles() {
@@ -27,5 +28,11 @@ export class AdminArticlesComponent implements OnInit {
       this.articles = response.articles;
       this.paging = response.paging;
     });
+  }
+
+  deleteArticle(id) {
+    this.blogService.deleteArticle(id).subscribe((result)=> {
+      this.loadArticles();
+    })
   }
 }

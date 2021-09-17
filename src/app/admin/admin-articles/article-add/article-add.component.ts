@@ -1,7 +1,7 @@
 import { Language } from './../../../models/articles/language';
-import { Article } from './../../../models/articles/articles';
+import { Articles } from './../../../models/articles/articles';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormArray,
   FormBuilder,
@@ -11,6 +11,8 @@ import {
 } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 import { BlogCategory } from 'src/app/models/blogCategories';
+import { ArticlesResponse } from 'src/app/models/articles/articlesResponse';
+import { Article } from 'src/app/models/articles/article';
 
 @Component({
   selector: 'app-article-add',
@@ -20,14 +22,15 @@ import { BlogCategory } from 'src/app/models/blogCategories';
 export class ArticleAddComponent implements OnInit {
   blogCategories: BlogCategory[];
   articles;
-  data;
+  id;
 
   form = this.fb.group({
     titles: this.fb.array([]),
   });
 
   constructor(
-    private route: Router,
+    private route: ActivatedRoute,
+    private router: Router,
     private blogService: BlogService,
     private fb: FormBuilder
   ) {
@@ -63,6 +66,13 @@ export class ArticleAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadBlogCategories();
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id){
+      this.blogService.getArticleById(this.id).subscribe((response: Article)=> {
+        const article = response
+        this.form.patchValue(article)      
+      })
+    }
   }
 
   displayLanguage(formGroup: FormGroup) {
@@ -76,11 +86,18 @@ export class ArticleAddComponent implements OnInit {
   }
 
   onSave() {
-    this.data = this.form.getRawValue();
-    this.blogService.postArticles(this.data).subscribe((result) => {
-      console.log(result);
-    });
+    const data = this.form.getRawValue();
+    if(this.id) {
+      this.blogService.putArticle(this.id, data).subscribe((result)=> {
+        this.router.navigate(['/admin/articles'])
+      })
+    } else {
+      this.blogService.postArticle(data).subscribe((result) => {
+        this.router.navigate(['/admin/articles'])
+      });
+    }
   }
+
 
   loadBlogCategories() {
     this.blogService

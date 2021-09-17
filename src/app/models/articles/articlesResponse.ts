@@ -1,7 +1,7 @@
 import { Paging } from '../paging';
-import { Article } from './articles';
+import { Articles } from './articles';
 
 export interface ArticlesResponse {
-  articles: Article[];
+  articles: Articles[];
   paging: Paging;
 }
