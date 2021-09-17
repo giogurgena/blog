@@ -53,8 +53,6 @@ export class ArticleAddComponent implements OnInit {
     });
   }
 
-  
-
   get languages() {
     return this.form.controls['languages'] as FormArray;
   }
@@ -78,8 +76,10 @@ export class ArticleAddComponent implements OnInit {
   }
 
   onSave() {
-    const data = this.form.getRawValue()
-    console.log(data.languages);    
+    this.data = this.form.getRawValue();
+    this.blogService.postArticles(this.data).subscribe((result) => {
+      console.log(result);
+    });
   }
 
   loadBlogCategories() {

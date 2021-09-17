@@ -17,12 +17,21 @@
       <div class="content">
         <form [formGroup]="form" (ngSubmit)="onSave()">
           <div class="categories form-group">
-            <select class="form-select" aria-label="select category" formControlName="categoryId">
+            <select
+              class="form-select"
+              aria-label="select category"
+              formControlName="categoryId"
+            >
               <option disabled hidden value="null">Select Category</option>
-              <option *ngFor="let category of blogCategories" value={{category.id}} >{{category.name}}</option>
+              <option
+                *ngFor="let category of blogCategories"
+                value="{{ category.id }}"
+              >
+                {{ category.name }}
+              </option>
             </select>
-        </div>
-          
+          </div>
+
           <div formArrayName="languages">
             <div class="row">
               <div
@@ -42,7 +51,12 @@
                       />
                     </div>
                     <div class="form-group card-body">
-                      <textarea class="form-control" rows="3" formControlName="description" placeholder="Enter text here..."></textarea>
+                      <textarea
+                        class="form-control"
+                        rows="3"
+                        formControlName="description"
+                        placeholder="Enter text here..."
+                      ></textarea>
                     </div>
                   </div>
                 </div>

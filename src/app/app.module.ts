@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthenticationService } from './services/authenticatio.service';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogCategoriesComponent } from './blog/blog-categories/blog-categories.component';
 import { BlogArticlesComponent } from './blog/blog-articles/blog-articles.component';
@@ -50,7 +51,15 @@ import { CategoriesAddComponent } from './admin/admin-categories/categories-add/
     ReactiveFormsModule,
     FontAwesomeModule,
   ],
-  providers: [AuthGuard, AuthenticationService],
+  providers: [
+    AuthGuard,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

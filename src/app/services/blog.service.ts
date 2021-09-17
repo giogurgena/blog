@@ -23,7 +23,7 @@ export class BlogService {
     return this.http.get<ArticlesResponse>(this.baseUrl + 'Articles');
   }
 
-  postArticles() {
-    // return this.http.post(this.baseUrl + 'Articles', data);
+  postArticles(data) {
+    return this.http.post(this.baseUrl + 'Articles', data);
   }
 }
