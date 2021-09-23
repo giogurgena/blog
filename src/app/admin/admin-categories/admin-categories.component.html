@@ -9,7 +9,12 @@
           <h1>Categories</h1>
         </div>
         <div class="col-sm-6">
-          <button class="btn btn-primary float-right">Add</button>
+          <button
+            class="btn btn-primary float-right add-button"
+            routerLink="/admin/categories/add"
+          >
+            Add
+          </button>
         </div>
       </div>
 
@@ -28,8 +33,15 @@
             <td>{{ adminCategory.id }}</td>
             <td>{{ adminCategory.name }}</td>
             <td>
-              <fa-icon [icon]="faEdit"></fa-icon
-              ><fa-icon [icon]="faTrash"></fa-icon>
+              <a [routerLink]="['/admin/categories/edit', adminCategory.id]">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
+              <button
+                class="delete-button"
+                (click)="deleteBlogCategory(adminCategory.id)"
+              >
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
             </td>
           </tr>
         </tbody>

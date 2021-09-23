@@ -1,5 +1,3 @@
-import { Language } from './../../../models/articles/language';
-import { Articles } from './../../../models/articles/articles';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -11,7 +9,6 @@ import {
 } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 import { BlogCategory } from 'src/app/models/blogCategories';
-import { ArticlesResponse } from 'src/app/models/articles/articlesResponse';
 import { Article } from 'src/app/models/articles/article';
 
 @Component({
@@ -102,7 +99,6 @@ export class ArticleAddComponent implements OnInit {
     } else {
       this.blogService.postArticle(data).subscribe((result) => {
         this.handlePostUpload(result);
-        
       });
     }
   }

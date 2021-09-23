@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { CategoriesAddComponent } from './admin/admin-categories/categories-add/categories-add.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,13 @@ const routes: Routes = [
           { path: 'edit/:id', component: ArticleAddComponent },
         ],
       },
-      { path: 'categories', component: AdminCategoriesComponent },
+      { path: 'categories', 
+        children: [
+          { path: '', component: AdminCategoriesComponent },
+          { path: 'add', component: CategoriesAddComponent },
+          { path: 'edit/:id', component: CategoriesAddComponent },
+        ],
+      },
     ],
   },
   { path: 'access-denied', component: AccessDeniedComponent },

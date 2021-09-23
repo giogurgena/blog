@@ -9,3 +9,29 @@ tbody {
 .main-content {
   padding: 20px 20px 20px 0;
 }
+
+fa-icon {
+  cursor: pointer;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
+
+fa-icon:hover {
+  color: blue;
+}
+
+.delete-button {
+  outline: none;
+  background-color: none;
+  border: none;
+  width: 10px;
+}
+
+.add-button {
+  color: white;
+}
+
+.add-button:hover {
+  background-color: white;
+  color: blue;
+}

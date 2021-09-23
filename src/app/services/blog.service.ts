@@ -20,6 +20,24 @@ export class BlogService {
     );
   }
 
+  postBlogCategory(data){
+    return this.http.post(this.baseUrl + 'BlogCategories', data)
+  }
+
+  getBlogCategoryById(id): Observable<BlogCategory[]> {
+    return this.http.get<BlogCategory[]>(
+      this.baseUrl + 'BlogCategories/' + id
+    )
+  }
+
+  putBlogCategory(id, data) {
+    return this.http.put(this.baseUrl + 'BlogCategories/' + id, data);
+  }
+
+  deleteBlogCategory(id){
+    return this.http.delete(this.baseUrl + 'BlogCategories/' + id);
+  }
+
   getArticles(): Observable<ArticlesResponse> {
     return this.http.get<ArticlesResponse>(this.baseUrl + 'Articles');
   }

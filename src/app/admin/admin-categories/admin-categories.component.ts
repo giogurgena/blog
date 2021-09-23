@@ -26,4 +26,10 @@ export class AdminCategoriesComponent implements OnInit {
         this.adminCategories = response;
       });
   }
+
+  deleteBlogCategory(id) {
+    this.blogService.deleteBlogCategory(id).subscribe((result)=> {
+      this.loadBlogCategories();
+    })
+  }
 }
