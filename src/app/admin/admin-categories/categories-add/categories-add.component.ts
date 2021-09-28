@@ -12,6 +12,7 @@ import { BlogService } from 'src/app/services/blog.service';
 export class CategoriesAddComponent implements OnInit {
   blogCategories: BlogCategory[];
   id;
+  isLoading = false;
 
   form = this.fb.group({
     titles: this.fb.array([]),
@@ -76,14 +77,17 @@ export class CategoriesAddComponent implements OnInit {
 
 
   onSave() {
+    this.isLoading = true;
     const data = this.form.getRawValue();
     if(this.id) {
       this.blogService.putBlogCategory(this.id, data).subscribe(()=> {
         this.handlePostUpload(this.id);
+        this.isLoading = false;
       })
     } else {
       this.blogService.postBlogCategory(data).subscribe((result) => {
         this.handlePostUpload(result);
+        this.isLoading = false;
       });
     }
   }

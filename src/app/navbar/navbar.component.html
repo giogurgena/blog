@@ -58,8 +58,20 @@
           placeholder="Password"
           aria-label="Password"
         />
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+        <button
+          class="btn btn-outline-light my-2 my-sm-0"
+          type="submit"
+          *ngIf="!isLoading"
+        >
           Log in
+        </button>
+        <button
+          class="btn btn-outline-light my-2 my-sm-0"
+          type="submit"
+          *ngIf="isLoading"
+          disabled
+        >
+          <app-loading></app-loading>
         </button>
       </form>
     </div>

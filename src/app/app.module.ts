@@ -24,6 +24,7 @@ import { AdminSideMenuComponent } from './admin/admin-side-menu/admin-side-menu.
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleAddComponent } from './admin/admin-articles/article-add/article-add.component';
 import { CategoriesAddComponent } from './admin/admin-categories/categories-add/categories-add.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CategoriesAddComponent } from './admin/admin-categories/categories-add/
     AdminSideMenuComponent,
     ArticleAddComponent,
     CategoriesAddComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

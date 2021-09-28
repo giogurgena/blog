@@ -15,6 +15,7 @@ export class AdminArticlesComponent implements OnInit {
   paging: Paging;
   faEdit = faEdit;
   faTrash = faTrash;
+  isLoading = false;
 
   constructor(private blogService: BlogService) {}
 
@@ -24,9 +25,11 @@ export class AdminArticlesComponent implements OnInit {
   }
 
   loadArticles() {
+    this.isLoading = true;
     this.blogService.getArticles().subscribe((response: ArticlesResponse) => {
       this.articles = response.articles;
       this.paging = response.paging;
+      this.isLoading = false;
     });
   }
 

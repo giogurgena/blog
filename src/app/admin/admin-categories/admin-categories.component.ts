@@ -12,6 +12,7 @@ export class AdminCategoriesComponent implements OnInit {
   adminCategories: BlogCategory[];
   faEdit = faEdit;
   faTrash = faTrash;
+  isLoading = false;
 
   constructor(private blogService: BlogService) {}
 
@@ -20,10 +21,12 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   loadBlogCategories() {
+    this.isLoading = true;
     this.blogService
       .getBlogCategories()
       .subscribe((response: BlogCategory[]) => {
         this.adminCategories = response;
+        this.isLoading = false;
       });
   }
 

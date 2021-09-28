@@ -2,6 +2,7 @@ import { AuthenticationService } from './../services/authenticatio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   form: FormGroup;
-  // authenticated: true;
+  isLoading = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -24,9 +25,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogin(event) {
+    this.isLoading = true;
     event.preventDefault();
     this.authService.login(this.form.value).subscribe((response: any) => {
       this.route.navigate(['admin']);
+      this.isLoading = false;
     });
   }
 

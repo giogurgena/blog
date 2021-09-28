@@ -2,4 +2,6 @@
 @import "/node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+@import "/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";

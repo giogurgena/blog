@@ -1,5 +1,8 @@
 <div class="blog-categories mt-5">
-  <div class="container">
+  <div *ngIf="isLoading">
+    <app-loading size="3x"></app-loading>
+  </div>
+  <div class="container" *ngIf="!isLoading">
     <div class="row">
       <div class="col-sm-12 col-md-4">
         <app-blog-categories

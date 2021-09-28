@@ -21,6 +21,7 @@ export class ArticleAddComponent implements OnInit {
   articles;
   id;
   file;
+  isLoading = false;
 
   form = this.fb.group({
     titles: this.fb.array([]),
@@ -91,14 +92,17 @@ export class ArticleAddComponent implements OnInit {
   }
 
   onSave() {
+    this.isLoading = true;
     const data = this.form.getRawValue();
     if(this.id) {
       this.blogService.putArticle(this.id, data).subscribe(()=> {
         this.handlePostUpload(this.id);
+        this.isLoading = false;
       })
     } else {
       this.blogService.postArticle(data).subscribe((result) => {
         this.handlePostUpload(result);
+        this.isLoading = false;
       });
     }
   }
